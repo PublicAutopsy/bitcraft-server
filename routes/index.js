@@ -6,7 +6,7 @@ var client = new bitcoin.Client({host:'localhost', port:8332, user:'bitcoinrpc',
 
 exports.index = function(req, res){
     Player.find(function(err, players){
-        console.log(player);
+        console.log(players);
         res.end();
     })
 };
