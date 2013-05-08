@@ -27,7 +27,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.post('/api/newPlayer', routes.create);
+app.post('/api/newPlayer', routes.new);
 app.get('/api/getBalance', routes.getBalance);
 app.get('/api/newWallet', routes.makeWallet);
 
