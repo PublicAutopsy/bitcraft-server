@@ -22,6 +22,7 @@ exports.new = function(req, res){
            return addr;
        }
     });
+    console.log("addr: "+newAddr);
     new Player({
         phoneNumber   : data.phone,
         address       : newAddr
