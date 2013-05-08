@@ -34,16 +34,12 @@ exports.new = function(req, res){
     });
 }
 
-exports.makeWallet = function(req, res){
-    client.getNewAddress("", function(err, address){
-        console.log(address);
-        res.end();
-    })
-}
-
 exports.getBalance = function(req, res){
-    client.getBalance("*", 0, function(err, balance){
-        console.log("Balance: "+balance);
-        res.end();
-    })
+    var data = req.body;
+    Player.findOne({phoneNumber: data.phone},function(err, player){
+        client.cmd("getbalance", player.phoneNumber, 0, function(err, balance){
+            console.log(balance);
+            res.end();
+        });
+    });
 }
