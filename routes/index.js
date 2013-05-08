@@ -11,6 +11,7 @@ exports.index = function(req, res){
 };
 
 exports.new = function(req, res){
+    console.log(client.getNewAddress(data.phone));
     var data = req.body;
     console.log(data);
     new Player({
