@@ -27,7 +27,7 @@ exports.new = function(req, res){
 
     new Player({
         phoneNumber   : data.phone,
-        address       : newAddr
+        address       : newAddress
     }).save(function(err, player){
             if (err){
                 console.log(err);
