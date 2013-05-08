@@ -12,17 +12,18 @@ exports.index = function(req, res){
 exports.new = function(req, res){
 
     var data = req.body;
+    var newAddr;
     console.log(client.getNewAddress(data.phone));
     console.log(data);
-    var newAddr = client.cmd("getnewaddress", data.phone, function(err, addr){
+    client.cmd("getnewaddress", data.phone, function(err, addr){
        if (err){
            return console.log(err);
        } else {
            console.log(addr);
-           return addr;
+           newAddr = addr;
        }
     });
-    console.log("addr: "+newAddr);
+    console.log("addr: "+ newAddr);
     new Player({
         phoneNumber   : data.phone,
         address       : newAddr
