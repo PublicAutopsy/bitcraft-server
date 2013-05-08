@@ -5,14 +5,13 @@ var Player = mongoose.model('Player');
 var client = new bitcoin.Client({host:'localhost', port:8332, user:'bitcoinrpc', pass:'C7rJWWWZWUjzZaf4zPzR8DcEu4vaPEPxoXDnzB8ZHccs'});
 
 exports.index = function(req, res){
-    console.log(client);
-    res.end();
+    Player.find(function(err, players){
+        res.end(players);
+    })
 };
 
 exports.new = function(req, res){
     var data = req.body;
-
-
     client.cmd("getnewaddress", data.phone, function(err, addr){
        if (err){
            return console.log(err);
@@ -32,8 +31,6 @@ exports.new = function(req, res){
 
        }
     });
-
-
 }
 
 exports.makeWallet = function(req, res){
