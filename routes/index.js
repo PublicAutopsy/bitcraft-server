@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 exports.makeWallet = function(req, res){
-    client.getnewaddress("", function(err, address){
+    client.getNewAddress("", function(err, address){
         console.log(address);
         res.end();
     })
