@@ -4,11 +4,13 @@
  */
 
 var express = require('express')
-  , routes = require('./routes')
   , http = require('http')
   , path = require('path');
 
 var app = express();
+
+require('./db');
+var routes = require('./routes');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
