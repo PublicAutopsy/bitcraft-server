@@ -30,8 +30,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.post('/api/newPlayer', routes.new);
-app.get('/api/getBalance', routes.getBalance);
-app.get('/api/newWallet', routes.makeWallet);
+app.post('/api/getBalance', routes.getBalance);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
