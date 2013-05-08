@@ -7,6 +7,21 @@ exports.index = function(req, res){
     res.end();
 };
 
+exports.create = function(req, res){
+    var data = req.body;
+    console.log(data);
+    new Player({
+        phoneNumber   : data.phone,
+        address       : client.getNewAddress(data.phone)
+    }).save(function(err, player){
+            if (err){
+                console.log(err);
+            } else {
+                res.send(player);
+            }
+        })
+}
+
 exports.makeWallet = function(req, res){
     client.getNewAddress("", function(err, address){
         console.log(address);
