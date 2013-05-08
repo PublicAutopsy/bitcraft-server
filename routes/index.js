@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Player = mongoose.model('Player');
 
 
-var client = new bitcoin.Client('localhost', 3000, 'bitcoinrpc', 'C7rJWWWZWUjzZaf4zPzR8DcEu4vaPEPxoXDnzB8ZHccs');
+var client = new bitcoin.Client('localhost', 8332, 'bitcoinrpc', 'C7rJWWWZWUjzZaf4zPzR8DcEu4vaPEPxoXDnzB8ZHccs');
 
 exports.index = function(req, res){
     console.log(client);
