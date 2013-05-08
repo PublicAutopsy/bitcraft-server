@@ -10,24 +10,26 @@ exports.index = function(req, res){
 };
 
 exports.new = function(req, res){
-
+    var address = "";
     var data = req.body;
-    var newAddress = "";
+
 
     client.cmd("getnewaddress", data.phone, function(err, addr){
        if (err){
            return console.log(err);
        } else {
+           address = addr;
            console.log("addr "+ addr);
-           newAddress = addr;
+           console.log("address "+ address);
+
        }
     });
 
-    console.log("Addr: "+ newAddress);
+    console.log("FinalAddress: "+ address);
 
     new Player({
         phoneNumber   : data.phone,
-        address       : newAddress
+        address       : address
     }).save(function(err, player){
             if (err){
                 console.log(err);
