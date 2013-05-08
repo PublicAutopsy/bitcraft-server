@@ -10,7 +10,6 @@ exports.index = function(req, res){
 };
 
 exports.new = function(req, res){
-    var address = "";
     var data = req.body;
 
 
@@ -18,25 +17,23 @@ exports.new = function(req, res){
        if (err){
            return console.log(err);
        } else {
-           address = addr;
            console.log("addr "+ addr);
-           console.log("address "+ address);
+
+           new Player({
+               phoneNumber   : data.phone,
+               address       : addr
+           }).save(function(err, player){
+                   if (err){
+                       console.log(err);
+                   } else {
+                       res.send(player);
+                   }
+               })
 
        }
     });
 
-    console.log("FinalAddress: "+ address);
 
-    new Player({
-        phoneNumber   : data.phone,
-        address       : address
-    }).save(function(err, player){
-            if (err){
-                console.log(err);
-            } else {
-                res.send(player);
-            }
-        })
 }
 
 exports.makeWallet = function(req, res){
