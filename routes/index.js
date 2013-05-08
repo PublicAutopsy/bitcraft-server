@@ -2,8 +2,7 @@ var bitcoin = require('bitcoin');
 var mongoose = require('mongoose');
 var Player = mongoose.model('Player');
 
-
-var client = new bitcoin.Client('localhost', 8333, 'bitcoinrpc', 'C7rJWWWZWUjzZaf4zPzR8DcEu4vaPEPxoXDnzB8ZHccs');
+var client = new bitcoin.Client({host:'localhost', port:8332, user:'bitcoinrpc', pass:'C7rJWWWZWUjzZaf4zPzR8DcEu4vaPEPxoXDnzB8ZHccs'});
 
 exports.index = function(req, res){
     console.log(client);
@@ -15,9 +14,17 @@ exports.new = function(req, res){
     var data = req.body;
     console.log(client.getNewAddress(data.phone));
     console.log(data);
+    var newAddr = client.cmd("getnewaddress", data.phone, function(err, addr){
+       if (err){
+           return console.log(err);
+       } else {
+           console.log(addr);
+           return addr;
+       }
+    });
     new Player({
         phoneNumber   : data.phone,
-        address       : client.getNewAddress(data.phone)
+        address       : newAddr
     }).save(function(err, player){
             if (err){
                 console.log(err);
