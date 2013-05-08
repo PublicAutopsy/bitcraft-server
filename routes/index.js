@@ -18,7 +18,7 @@ exports.new = function(req, res){
        if (err){
            return console.log(err);
        } else {
-           console.log(addr);
+           console.log("addr "+ addr);
            newAddress = addr;
        }
     });
