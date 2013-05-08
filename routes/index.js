@@ -1,8 +1,7 @@
+var bitcoin = require('bitcoin');
 
-/*
- * GET home page.
- */
+var client = new bitcoin.Client('localhost', 3000, 'bitcoinrpc', 'C7rJWWWZWUjzZaf4zPzR8DcEu4vaPEPxoXDnzB8ZHccs');
 
 exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+    console.log(client);
 };
